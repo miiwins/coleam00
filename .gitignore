@@ -1,0 +1,35 @@
+# Submodule directories - tracked via .gitmodules
+Archon/
+habit-tracker/
+local-ai-packaged/
+dynamous-kiro-hackathon/
+human-in-the-loop-rag-agent/
+Linear-Coding-Agent-Harness/
+MongoDB-RAG-Agent/
+remote-agentic-coding-system/
+PydanticAI-Research-Agent/
+context-engineering-intro/
+ottomator-agents/
+dynamous-ai-coach/
+codex-telegram-coding-assistant/
+ai-coding-summit-workshop/
+trainers-ally/
+arcade-ai-agent/
+mcp-crawl4ai-rag/
+remote-mcp-server-with-auth/
+mcp-mem0/
+supabase-mcp/
+n8n-nodes-mcp/
+pydantic-ai-github-agent/
+midnight-converse/
+azure-mind-chatter/
+ai-agents-masterclass/
+ollama-swarm/
+chatgpt-chrome-extension/
+evolving-snake-game/
+NorthStar/
+TwoToken-Claim-Contract/
+oburns-contracts/
+
+# Claude Code directory
+.claude/

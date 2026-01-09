@@ -1,0 +1,154 @@
+[submodule "Archon"]
+    path = Archon
+    url = https://github.com/coleam00/Archon.git
+    branch = main
+
+[submodule "habit-tracker"]
+    path = habit-tracker
+    url = https://github.com/coleam00/habit-tracker.git
+    branch = main
+
+[submodule "local-ai-packaged"]
+    path = local-ai-packaged
+    url = https://github.com/coleam00/local-ai-packaged.git
+    branch = main
+
+[submodule "dynamous-kiro-hackathon"]
+    path = dynamous-kiro-hackathon
+    url = https://github.com/coleam00/dynamous-kiro-hackathon.git
+    branch = main
+
+[submodule "human-in-the-loop-rag-agent"]
+    path = human-in-the-loop-rag-agent
+    url = https://github.com/coleam00/human-in-the-loop-rag-agent.git
+    branch = main
+
+[submodule "Linear-Coding-Agent-Harness"]
+    path = Linear-Coding-Agent-Harness
+    url = https://github.com/coleam00/Linear-Coding-Agent-Harness.git
+    branch = main
+
+[submodule "MongoDB-RAG-Agent"]
+    path = MongoDB-RAG-Agent
+    url = https://github.com/coleam00/MongoDB-RAG-Agent.git
+    branch = main
+
+[submodule "remote-agentic-coding-system"]
+    path = remote-agentic-coding-system
+    url = https://github.com/coleam00/remote-agentic-coding-system.git
+    branch = main
+
+[submodule "PydanticAI-Research-Agent"]
+    path = PydanticAI-Research-Agent
+    url = https://github.com/coleam00/PydanticAI-Research-Agent.git
+    branch = main
+
+[submodule "context-engineering-intro"]
+    path = context-engineering-intro
+    url = https://github.com/coleam00/context-engineering-intro.git
+    branch = main
+
+[submodule "ottomator-agents"]
+    path = ottomator-agents
+    url = https://github.com/coleam00/ottomator-agents.git
+    branch = main
+
+[submodule "dynamous-ai-coach"]
+    path = dynamous-ai-coach
+    url = https://github.com/coleam00/dynamous-ai-coach.git
+    branch = main
+
+[submodule "codex-telegram-coding-assistant"]
+    path = codex-telegram-coding-assistant
+    url = https://github.com/coleam00/codex-telegram-coding-assistant.git
+    branch = main
+
+[submodule "ai-coding-summit-workshop"]
+    path = ai-coding-summit-workshop
+    url = https://github.com/coleam00/ai-coding-summit-workshop.git
+    branch = main
+
+[submodule "trainers-ally"]
+    path = trainers-ally
+    url = https://github.com/coleam00/trainers-ally.git
+    branch = main
+
+[submodule "arcade-ai-agent"]
+    path = arcade-ai-agent
+    url = https://github.com/coleam00/arcade-ai-agent.git
+    branch = main
+
+[submodule "mcp-crawl4ai-rag"]
+    path = mcp-crawl4ai-rag
+    url = https://github.com/coleam00/mcp-crawl4ai-rag.git
+    branch = main
+
+[submodule "remote-mcp-server-with-auth"]
+    path = remote-mcp-server-with-auth
+    url = https://github.com/coleam00/remote-mcp-server-with-auth.git
+    branch = main
+
+[submodule "mcp-mem0"]
+    path = mcp-mem0
+    url = https://github.com/coleam00/mcp-mem0.git
+    branch = main
+
+[submodule "supabase-mcp"]
+    path = supabase-mcp
+    url = https://github.com/coleam00/supabase-mcp.git
+    branch = main
+
+[submodule "n8n-nodes-mcp"]
+    path = n8n-nodes-mcp
+    url = https://github.com/coleam00/n8n-nodes-mcp.git
+    branch = main
+
+[submodule "pydantic-ai-github-agent"]
+    path = pydantic-ai-github-agent
+    url = https://github.com/coleam00/pydantic-ai-github-agent.git
+    branch = main
+
+[submodule "midnight-converse"]
+    path = midnight-converse
+    url = https://github.com/coleam00/midnight-converse.git
+    branch = main
+
+[submodule "azure-mind-chatter"]
+    path = azure-mind-chatter
+    url = https://github.com/coleam00/azure-mind-chatter.git
+    branch = main
+
+[submodule "ai-agents-masterclass"]
+    path = ai-agents-masterclass
+    url = https://github.com/coleam00/ai-agents-masterclass.git
+    branch = main
+
+[submodule "ollama-swarm"]
+    path = ollama-swarm
+    url = https://github.com/coleam00/ollama-swarm.git
+    branch = main
+
+[submodule "chatgpt-chrome-extension"]
+    path = chatgpt-chrome-extension
+    url = https://github.com/coleam00/chatgpt-chrome-extension.git
+    branch = main
+
+[submodule "evolving-snake-game"]
+    path = evolving-snake-game
+    url = https://github.com/coleam00/evolving-snake-game.git
+    branch = main
+
+[submodule "NorthStar"]
+    path = NorthStar
+    url = https://github.com/coleam00/NorthStar.git
+    branch = main
+
+[submodule "TwoToken-Claim-Contract"]
+    path = TwoToken-Claim-Contract
+    url = https://github.com/coleam00/TwoToken-Claim-Contract.git
+    branch = main
+
+[submodule "oburns-contracts"]
+    path = oburns-contracts
+    url = https://github.com/coleam00/oburns-contracts.git
+    branch = main
