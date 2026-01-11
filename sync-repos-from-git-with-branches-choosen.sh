@@ -1,7 +1,52 @@
 #!/bin/bash
 
-# Script to check and sync all git repositories in subdirectories at https://github.com/dynamous-community
-# Usage: ./sync-repos.sh [--check-only|--sync] [--all-branches]
+################################################################################
+# Dynamous Repository Sync Tool
+################################################################################
+#
+# Description:
+#   This script automates checking and syncing all git repositories in
+#   subdirectories. It can clone missing repositories from .gitmodules,
+#   check for available updates, and sync repositories using either main
+#   branch only or all branches.
+#
+# Features:
+#   - Automatically clones missing repositories from .gitmodules
+#   - Checks all subdirectories for git repositories
+#   - Detects repositories that are behind their upstream
+#   - Syncs repositories with two modes:
+#     * Main branch only: Switches to main/master and pulls updates
+#     * All branches: Fetches and updates all tracking branches
+#
+# Usage:
+#   ./sync-repos-from-git-with-branches-choosen.sh [OPTIONS]
+#
+# Options:
+#   --check-only      Only check for updates, don't sync
+#   --sync            Automatically sync without prompting
+#   --all-branches    Sync all branches instead of just main branch
+#                     (only applies when used with --sync)
+#
+# Examples:
+#   ./sync-repos-from-git-with-branches-choosen.sh
+#       Interactive mode: Check repos and prompt for sync options
+#
+#   ./sync-repos-from-git-with-branches-choosen.sh --check-only
+#       Only check which repositories have updates available
+#
+#   ./sync-repos-from-git-with-branches-choosen.sh --sync
+#       Check and sync main branch only (non-interactive)
+#
+#   ./sync-repos-from-git-with-branches-choosen.sh --sync --all-branches
+#       Check and sync all branches (non-interactive)
+#
+# Interactive Mode:
+#   When run without --check-only or --sync, the script will:
+#   1. Check all repositories for updates
+#   2. Ask if you want to sync
+#   3. Ask if you want to sync main branch only or all branches
+#
+################################################################################
 
 set -e
 
