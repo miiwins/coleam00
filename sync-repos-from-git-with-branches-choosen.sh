@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script to check and sync all git repositories in subdirectories at https://github.com/dynamous-community
-# Usage: ./sync-repos.sh [--check-only|--sync]
+# Usage: ./sync-repos.sh [--check-only|--sync] [--all-branches]
 
 set -e
 
@@ -14,11 +14,21 @@ NC='\033[0m' # No Color
 
 # Parse arguments
 MODE="interactive"
-if [ "$1" = "--check-only" ]; then
-    MODE="check"
-elif [ "$1" = "--sync" ]; then
-    MODE="sync"
-fi
+SYNC_ALL_BRANCHES=false
+
+for arg in "$@"; do
+    case $arg in
+        --check-only)
+            MODE="check"
+            ;;
+        --sync)
+            MODE="sync"
+            ;;
+        --all-branches)
+            SYNC_ALL_BRANCHES=true
+            ;;
+    esac
+done
 
 # Store the base directory
 BASE_DIR=$(pwd)
@@ -161,23 +171,69 @@ if [ "$MODE" = "interactive" ] && [ ${#HAS_UPDATES[@]} -gt 0 ]; then
         echo "Sync cancelled."
         exit 0
     fi
+
+    # Ask about branch sync mode
+    echo -e "${BLUE}Choose sync mode:${NC}"
+    echo "  1) Sync main branch only (switch to main/master and pull)"
+    echo "  2) Sync all branches (fetch and update all tracking branches)"
+    read -p "Enter choice (1 or 2): " -n 1 -r
+    echo ""
+    if [[ $REPLY = "2" ]]; then
+        SYNC_ALL_BRANCHES=true
+    fi
+
     MODE="sync"
 fi
 
 # Sync repositories if needed
 if [ "$MODE" = "sync" ] && [ ${#HAS_UPDATES[@]} -gt 0 ]; then
-    echo -e "${BLUE}=== Syncing repositories ===${NC}\n"
+    if [ "$SYNC_ALL_BRANCHES" = true ]; then
+        echo -e "${BLUE}=== Syncing all branches for repositories ===${NC}\n"
+    else
+        echo -e "${BLUE}=== Syncing main branch for repositories ===${NC}\n"
+    fi
 
     for item in "${HAS_UPDATES[@]}"; do
         repo="${item%:*}"
 
-        echo -e "${BLUE}Pulling ${repo}...${NC}"
+        echo -e "${BLUE}Syncing ${repo}...${NC}"
         cd "$repo"
 
-        if git pull --ff-only; then
-            echo -e "${GREEN}✓ Successfully updated ${repo}${NC}\n"
+        if [ "$SYNC_ALL_BRANCHES" = true ]; then
+            # Sync all branches
+            if git fetch --all --prune; then
+                # Update all tracking branches
+                git branch -r | grep -v '\->' | while read remote; do
+                    branch="${remote#origin/}"
+                    if git show-ref --verify --quiet "refs/heads/$branch"; then
+                        echo -e "${BLUE}  Updating branch: ${branch}${NC}"
+                        git checkout "$branch" --quiet 2>/dev/null && git pull --ff-only --quiet 2>/dev/null || echo -e "${YELLOW}  ⚠ Could not update ${branch}${NC}"
+                    fi
+                done
+                echo -e "${GREEN}✓ Successfully synced all branches in ${repo}${NC}\n"
+            else
+                echo -e "${RED}✗ Failed to fetch branches for ${repo}${NC}\n"
+            fi
         else
-            echo -e "${RED}✗ Failed to update ${repo}${NC}\n"
+            # Sync main branch only
+            # Determine main branch name (main or master)
+            MAIN_BRANCH=""
+            if git show-ref --verify --quiet refs/remotes/origin/main; then
+                MAIN_BRANCH="main"
+            elif git show-ref --verify --quiet refs/remotes/origin/master; then
+                MAIN_BRANCH="master"
+            else
+                echo -e "${YELLOW}⚠ No main or master branch found, skipping ${repo}${NC}\n"
+                cd "$BASE_DIR"
+                continue
+            fi
+
+            # Switch to main branch and pull
+            if git checkout "$MAIN_BRANCH" --quiet 2>/dev/null && git pull --ff-only; then
+                echo -e "${GREEN}✓ Successfully updated ${MAIN_BRANCH} branch in ${repo}${NC}\n"
+            else
+                echo -e "${RED}✗ Failed to update ${MAIN_BRANCH} branch in ${repo}${NC}\n"
+            fi
         fi
 
         cd "$BASE_DIR"
